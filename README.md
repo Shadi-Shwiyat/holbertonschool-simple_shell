@@ -10,14 +10,14 @@
 - [Example of Use](#example-of-use)
 - [Authors](#authors)
 
-##Description
+## Description
 
-##File Structure
+## File Structure
 
-##System and Library calls
+## System and Library calls
 
-##Installation
+## Installation
 
-##Example of Use
+## Example of Use
 
-##Authors
+## Authors
