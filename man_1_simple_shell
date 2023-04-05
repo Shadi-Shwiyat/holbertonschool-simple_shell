@@ -1,0 +1,31 @@
+.TH SIMPLE_SHELL "General Commands Manual"
+
+.SH NAME
+.B hsh\fR \- A simple command interpreter (simple_shell)
+
+.SH SYNOPSIS
+.B ./hsh
+.P
+.B [command] [option]
+.P
+.B./hsh\fR [options] [command] | file
+.P
+.B /bin/[command] [option]
+.SH DESCRIPTION
+.LP
+.B hsh\fR is a simple UNIX command language interpreter capable of executing commands.
+
+Utilization
+
+
+Environment
+
+
+Command 
+
+
+.SH AUTHORS
+Robert Farley \fI<https://github.com/Nomad-Rob>\fR
+.P
+Shadi-Shwiyat \fI <https://github.com/Shadi-Shwiyat>\fR
+.P
