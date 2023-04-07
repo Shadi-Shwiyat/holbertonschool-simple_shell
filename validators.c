@@ -6,7 +6,7 @@
 * @argv: String of arguments from input
 * Return: A pointer to an array of the tokenized PATH directories
 */
-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char *validate_input(char **args, char **argv __attribute__((unused))) /* */
+char *validate_input(char *args[], char *argv[] __attribute__((unused))) /* */
 {
 	char *new_args, *first, *slash_argument = "/";
 	char **tokens_path, holder_env[1024];
@@ -67,5 +67,5 @@ int validate_spaces(char *input)
 
 	if (i != len) /* if "i" is not equal to len it means that there are other characters in the input string besides spaces,tabs,line breaks */
 		flag = 0;
-	return (flag);
+	return (flag); /* All we are doing is ensuring that there is something in the input and just not spaces,tabs, or line break*/
 }
