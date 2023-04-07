@@ -22,7 +22,7 @@ char **hsh_tokenizer(char *input)
 		exit(EXIT_FAILURE);
 	}
 	/* tokenize the input string, checking for delimiter to split the string and replace them with \0 */
-	token = strtok(input, DELIM_I);
+	token = strtok(input, DELIM);
 	while (token != NULL)
 	{
 		tokens[position] = token; /* the array of tokens and the position variable is incremeneted*/
@@ -43,7 +43,7 @@ char **hsh_tokenizer(char *input)
 			}
 		}
 		/* once memory reallocation, continue processing the input string */
-		token = strtok(NULL, DELIM_I);
+		token = strtok(NULL, DELIM);
 	}
 	/* null terminate the array of tokens */
 	tokens[position] = NULL;
@@ -68,8 +68,8 @@ char **tokenizer_path(char *input)
 		fprintf(stderr, "memory allocation error\n");
 		exit(EXIT_FAILURE);
 	}
-	/* tokenize the PATH string, checking for DELIM and replace it with \0 and stores resulting tokens i nthe tokens array*/
-	token = strtok(input, DELIM_P);
+	/* tokenize the PATH string, checking for deliminter :and replace it with \0 and stores resulting tokens i nthe tokens array*/
+	token = strtok(input, ":");
 	while (token != NULL)
 	{
 		tokens[position] = token;
@@ -90,7 +90,7 @@ char **tokenizer_path(char *input)
 			}
 		}
 		/* once memory reallocation, continue processing the PATH string */
-		token = strtok(NULL, DELIM_P);
+		token = strtok(NULL, ":");
 	}
 	/* null terminate the array of tokens and returns a pointer to the tokens array */
 	tokens[position] = NULL;
