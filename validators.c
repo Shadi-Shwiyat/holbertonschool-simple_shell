@@ -67,5 +67,5 @@ int validate_spaces(char *input)
 
 	if (i != len) /* if "i" is not equal to len it means that there are other characters in the input string besides spaces,tabs,line breaks */
 		flag = 0;
-	return (flag);
+	return (flag); /* All we are doing is ensuring that there is something in the input and just not spaces,tabs, or line break*/
 }
