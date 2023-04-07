@@ -29,7 +29,7 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 			free(input_stdin);
 			break;
 		}
-		if (validate_spaces(input_stdin))/* if we get only spaces, tabs and line breaks */
+		if (validate_only_spaces(input_stdin))/* if we get only spaces, tabs and line breaks */
 		{
 			free(input_stdin);
 			continue;

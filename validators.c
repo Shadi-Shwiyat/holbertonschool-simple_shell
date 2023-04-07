@@ -52,11 +52,11 @@ char *validate_input(char *args[], char *argv[] __attribute__((unused))) /* */
 }
 
 /**
-* validate_spaces - Validate spaces, tabs and line breaks
+* validate_only_spaces - Checks if input is only spaces
 * @input: string from input
 * Return: 0 if there are spaces, tabs or line breaks
 */
-int validate_spaces(char *input)
+int validate_only_spaces(char *input)
 {
 	int i = 0, flag = 1, len = 0;
 
