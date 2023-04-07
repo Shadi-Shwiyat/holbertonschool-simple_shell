@@ -6,7 +6,7 @@
 * @argv: String of arguments from input
 * Return: A pointer to an array of the tokenized PATH directories
 */
-char *validate_input(char **args, char **argv __attribute__((unused))) /* */
+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char *validate_input(char **args, char **argv __attribute__((unused))) /* */
 {
 	char *new_args, *first, *slash_argument = "/";
 	char **tokens_path, holder_env[1024];
