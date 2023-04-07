@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
 * validate_input - Validates if the PATH exists
