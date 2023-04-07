@@ -14,16 +14,16 @@ int hsh_execute(char *args[], char *argv[], int *exit_status)
 {
 	pid_t pid;
 	int status; /* this will be used with waitpid syscall */
-	char *new_args;
+	char *new_args; /* this will be the path to the executable file */
 
 	/* check if PATH exists and can be accessed, also tokenize PATH */
 	new_args = validate_input(args, argv);
 	if (strcmp(new_args, "Fail access") == 0)
 		return (1);
-	pid = fork(); /* create a duplicate process (child) */
-	if (pid == 0) /* child process */
+	pid = fork(); /* create a duplicate process (child) to execute commands while shell continues to run */
+	if (pid == 0) /* if the current process is the child process, i.e. fork returns 0 */
 	{
-		/* execute a completely new program instead of the child */
+		/* pass execve the tokenized command and execute command, if it fails to execute it returns -1 */
 		if (execve(new_args, args, environ) == -1)
 		{
 			perror("execve fail");
@@ -36,13 +36,13 @@ int hsh_execute(char *args[], char *argv[], int *exit_status)
 		free(new_args);
 		return (1);
 	}
-	else /* parent process */
+	else /* safety net if fork() failed to created a child process or execve fails to run new program */
 	{
-		/* equivalent to wait */
+		/* equivalent to wait, -1 indicates parent to wait for child to terminate */
 		waitpid(-1, &status, 0);
-		/* check if the chld terminated normally */
+		/* check if the chld terminated normally with macro, true if normal false otherwise */
 		if (WIFEXITED(status))
-			/* return the exit status of the child */
+			/* set exit status equal to the return of the main function of child process using macro */
 			*exit_status = WEXITSTATUS(status);
 		/* evaluate first element of first token */
 		if (args[0][0] != '/' && args[0][0] != '.')
