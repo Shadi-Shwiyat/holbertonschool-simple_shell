@@ -11,17 +11,17 @@ char *validate_input(char **args, char **argv __attribute__((unused))) /* */
 	char *new_args, *first, *slash_argument = "/";
 	char **tokens_path, holder_env[1024];
 	int i = 0;
-	
-	if (args[0][0] == '/' || args [0][0] == '.') /* check first element in array if starts with "." or "/" character if so assumes arg is a path or executable file*/
+
+	if (args[0][0] == '/' || args[0][0] == '.') /* check first element in array if starts with "." or "/" character if so assumes arg is a path or executable file*/
 	{
 		new_args = args[0]; /* point to the same address */
 		if ((access(new_args, F_OK) == -1)) /* check if file exists if not it points to error message */
 		{
 			fprintf(stderr, "%s: No such file or directory\n", args[0]); /* returns this message as error if file or path doesnt exist */
-			return("Fail access");
+			return ("Fail access");
 		}
 	}
-	else 
+	else
 	{
 		strcpy(holder_env, getenv("PATH")); /* get PATH and copy it to holder_env buffer*/
 		tokens_path = tokenizer_path(holder_env); /* tokenize holer_env into array of directory PATH environment string */
