@@ -66,7 +66,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	char *ptr1;
 	unsigned int i;
 
-	ptr1 = (char *)ptr;
+	ptr1 = (char *)ptr; /*casting ptr to a char pointer , allows the function to treat memory block as an array of chars*/
 
 	if (ptr == NULL)/*checking if NULL, if it is returns a poniter to newly allocated memory block*/
 		return (malloc(new_size));
