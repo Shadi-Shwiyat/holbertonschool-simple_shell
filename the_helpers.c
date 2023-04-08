@@ -10,7 +10,7 @@
  * and if not continues to check the next file by taking two strings and combines them
  * returns a new string containing the concatenated strings
  */
-char *str_concat(char *s1, char *s2) 
+char *str_concat(char *s1, char *s2)
 {
 	char *s;
 	unsigned int i;
@@ -21,7 +21,7 @@ char *str_concat(char *s1, char *s2)
 	if (s1 == NULL)
 		s1 = "";
 
-	if (s2 == NULL) 
+	if (s2 == NULL)
 		s2 = "";
 
 	/*determines the length of each input string by going through the loops */
@@ -30,9 +30,9 @@ char *str_concat(char *s1, char *s2)
 
 	for (j = 0; s2[j] != '\0'; j++)
 		continue;
-	
+
 	j = j + 1; /*making room for the NULL terminator*/
-	
+
 	s = malloc((i + j) * sizeof(char));/*stores the combined strings into "s" to dynamically allocate memory at runtime*/
 
 	if (s == NULL) /*if malloc fails, the function returns NULL*/
@@ -55,10 +55,10 @@ char *str_concat(char *s1, char *s2)
  * @new_size: New size
  * Return: A pointer to the allocated memory
  *
- * Overall this is used to resize a previous allocated memory block taking care of operations in a safe way 
+ * Overall this is used to resize a previous allocated memory block taking care of operations in a safe way
  * Also provides option to free memory if new_size is 0
  */
- 
+
  /*ptr is previous allocated memory block, old_size old size of the memory block, new_size new size of the memory block*/
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
