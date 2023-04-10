@@ -10,44 +10,63 @@
  */
 char **hsh_tokenizer(char *input)
 {
-    	int buffer = BUFSIZE, newBuffer = 0, position = 0;
-    	char **tokens = NULL, *token = NULL;
-    	char **backup_tokens = NULL;
+    int buffer = BUFSIZE, newBuffer = 0, position = 0;
+    char **tokens = NULL, *token = NULL;
+    char **backup_tokens = NULL;
+    char *trimmed_token = NULL;
 
-    	tokens = malloc(buffer * sizeof(char *));
-    	if (tokens == NULL)
-    	{
-		fprintf(stderr, "memory allocation error\n");
-		exit(EXIT_FAILURE);
-    	}
+    tokens = malloc(buffer * sizeof(char *));
+    if (tokens == NULL)
+    {
+        fprintf(stderr, "memory allocation error\n");
+        exit(EXIT_FAILURE);
+    }
 
-    	/* Use strsep to tokenize the input string */
-    	while ((token = strsep(&input, DELIM)) != NULL)
-    	{
-		if (strlen(token) > 0)
-		{
-	    		tokens[position] = token;
-	    		position++;
+    /* Skip leading spaces */
+    while (*input == ' ')
+        input++;
 
-	    		if (position >= buffer)
-	    		{
-				newBuffer = BUFSIZE * 2;
-				backup_tokens = tokens;
-				tokens = realloc(tokens, newBuffer * sizeof(char *));
-				if (tokens == NULL)
-				{
-		    			free(backup_tokens);
-		    			fprintf(stderr, "memory allocation error\n");
-		    			exit(EXIT_FAILURE);
-				}
-				buffer = newBuffer;
-	    		}
-		}
-    	}
+    /* Use strsep to tokenize the input string */
+    while ((token = strsep(&input, DELIM)) != NULL)
+    {
+        /* Trim trailing spaces from the token */
+        while (strlen(token) > 0 && token[strlen(token) - 1] == ' ')
+        {
+            token[strlen(token) - 1] = '\0';
+        }
 
-	tokens[position] = NULL;
-	return tokens;
+        /* Trim leading spaces from the token */
+        trimmed_token = token;
+        while (*trimmed_token == ' ')
+        {
+            trimmed_token++;
+        }
+
+        if (strlen(trimmed_token) > 0)
+        {
+            tokens[position] = trimmed_token;
+            position++;
+
+            if (position >= buffer)
+            {
+                newBuffer = BUFSIZE * 2;
+                backup_tokens = tokens;
+                tokens = realloc(tokens, newBuffer * sizeof(char *));
+                if (tokens == NULL)
+                {
+                    free(backup_tokens);
+                    fprintf(stderr, "memory allocation error\n");
+                    exit(EXIT_FAILURE);
+                }
+                buffer = newBuffer;
+            }
+        }
+    }
+
+    tokens[position] = NULL;
+    return tokens;
 }
+
 /**
  * tokenizer_path - Split the environment variable PATH into an array of tokens
  * @input: Pointer to environment variable PATH
