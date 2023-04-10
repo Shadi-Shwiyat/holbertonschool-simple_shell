@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <string.h>
 
 #define BUFSIZE 100 /* constant buffer to use in toekn functions*/
 #define DELIM "\t\n" /* delimiters to check */

@@ -78,7 +78,7 @@ int hsh_execute_builtins(char *args[], char *input_stdin,
 		{NULL, NULL}
 	};
 
-	while (option[i].name_builtin)
+	while (options[i].name_builtin)
 	{
 		/* compare if args[0] matches the builtin function name */
 		if (strcmp(options[i].name_builtin, args[0]) == 0)

@@ -9,7 +9,7 @@
 
 int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 {
-	char *args[] = NULL; /*array of toekns*/
+	char **args = NULL; /*array of tokens*/
 	char *input_stdin = NULL; /* getline manages the memory so we set to NULL */
 	int status_return = 1, exit_status = 0;/* status_return is the return value of the function, exit_status is the exit status of the program */
 	size_t size = 0; /* we let getline manage the size of the buffer */

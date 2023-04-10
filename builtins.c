@@ -15,7 +15,7 @@ int hsh_cd(char *args[], char *input_stdin, int *exit_status)
 	char cwd[128]; /* used to store the cwd */
 
 	/* get the cwd, and save it in s */
-	getcwd(s, sizeof(cwd));
+	getcwd(cwd, sizeof(cwd));
 
 	(void)input_stdin;
 	(void)exit_status;
