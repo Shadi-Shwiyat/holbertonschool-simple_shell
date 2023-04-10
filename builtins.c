@@ -9,7 +9,7 @@
  *
  * Return: Always 1 (success)
  */
-int hsh_cd(char *args[], char *input_stdin, int *exit_status)
+int hsh_cd(char **args, char *input_stdin, int *exit_status)
 {
 	int status; /* store return value of chdir() syscall */
 	char cwd[128]; /* used to store the cwd */
@@ -57,7 +57,7 @@ int hsh_cd(char *args[], char *input_stdin, int *exit_status)
  *
  * Return: Always 1 (success)
  */
-int hsh_setenv(char *args[],  char *input_stdin, int *exit_status)
+int hsh_setenv(char **args,  char *input_stdin, int *exit_status)
 {
 	int n_tokens = 0; /* used to count # of tokens in CLI (same as argc) */
 
