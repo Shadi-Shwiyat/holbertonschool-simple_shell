@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * hsh_cd - Change directory
