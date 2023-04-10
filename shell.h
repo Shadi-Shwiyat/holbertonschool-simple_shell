@@ -20,9 +20,13 @@ typedef struct choose_builtin
 	int (*func_builtin)(char **, char *, int *);
 } choose_builtins_t;
 
+/* global variable to access the enviromment list */
+extern char *environ[];
+
 /* execute commands */
 int hsh_execute(char *args[], char *argv[], int *exit_status);
-int hsh_execute_builtins(char *args[], char *input_stdin, char *argv[], int *exit_status);
+int hsh_execute_builtins(char *args[], char *input_stdin,
+		char *argv[], int *exit_status);
 
 /* validate inputs */
 char *validate_input(char *args[], char *argv[] __attribute__((unused)));
@@ -32,8 +36,15 @@ int validate_only_spaces(char *input);
 char **hsh_tokenizer(char *input);
 char **tokenizer_path(char *input);
 
-/* builting functions */
+/* builtin functions */
+int hsh_cd(char *args[], char *input_stdin, int *exit_status);
+int hsh_setenv(char *args[],  char *input_stdin, int *exit_status);
+int hsh_unsetenv(char **args,  char *input_stdin, int *exit_status);
 int hsh_env(char **args, char *input_stdin, int *exit_status);
 int hsh_exit(char **args, char *input_stdin, int *exit_status);
+
+/* helper functions*/
+char *str_concat(char *s1, char *s2);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif

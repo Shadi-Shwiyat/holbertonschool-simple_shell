@@ -72,16 +72,14 @@ int hsh_setenv(char *args[],  char *input_stdin, int *exit_status)
 
 	/* user must supply setenv command along with two args */
 	if (n_tokens == 3)
-		/**
-		 * in the array of tokens, args[0] is equivilant to "setenv" command,
-		 * args[1] is added to the environment, its value is set to args[2],
-		 * the parameter 1 indicates if "args[1]" already exist to overwrite it
-		 * with the value of "args[2]"
-		 */
+		/* In the array of tokens, args[0] is equivilant to "setenv" command, */
+		/* args[1] is added to the environment, its value is set to args[2], */
+		/* the parameter 1 indicates if "args[1]" already exist to overwrite it */
+		/* with the value of "args[2]" */
 		setenv(args[1], args[2], 1);
 
 	/* if user supplied incorrect number of args, print an error */
-	else (n_tokens != 3)
+	else
 		fprintf(stderr, "Try use \"setenv [KEY] [VALUE]\"\n");
 
 	return (1);
@@ -137,18 +135,16 @@ int hsh_env(char **args, char *input_stdin, int *exit_status)
 	(void)input_stdin;
 	(void)exit_status;
 
-	/* check if the environment variables of current process are empty,
-	 * and if they are print an error
-	 */
+	/* check if the environment variables of current process are empty, */
+	/* and if they are print an error */
 	if (environ[i] == NULL)
 	{
 		printf("%s", "The built in env is empty");
 		return (1);
 	}
 
-	/* use a for loop to iterate through array of each environment
-	 * variable being used by current process, and print to stdout
-	 */
+	/* use a for loop to iterate through array of each environment */
+	/* variable being used by current process, and print to stdout */
 	for (i = 0; environ[i]; i++)
 		printf("%s\n", environ[i]);
 
@@ -172,10 +168,9 @@ int hsh_exit(char **args, char *input_stdin, int *exit_status)
 	(void)args;
 	(void)input_stdin;
 
-	/* check for any argurements passed with exit command,
-	 * if not then free memory allocated for shell and exit
-	 * while returning exit status
-	 */
+	/* check for any argurements passed with exit command, */
+	/* if not then free memory allocated for shell and exit */
+	/* while returning exit status */
 	if (args[1] == NULL)
 	{
 		free(args);
@@ -183,22 +178,20 @@ int hsh_exit(char **args, char *input_stdin, int *exit_status)
 		exit(*exit_status);
 	}
 
-	/* check if user supplied incorrect number of arguements
-	 * for the exit command, if so then print an error and
-	 * return 0 to indicate failure
-	 */
+	/* check if user supplied incorrect number of arguements */
+	/* for the exit command, if so then print an error and */
+	/* return 0 to indicate failure */
 	if (args[2] != NULL)
 	{
 		fprintf(stderr, "exit: too many arguments\n");
 		return (0);
 	}
 
-	/* is user supplied an arguement to exit command,
-	 * this converts the arguement to an interger value
-	 * to return upon exit, then frees allocated memory
-	 * for shell and exits program returning output_exit
-	 * variable
-	 */
+	/* is user supplied an arguement to exit command, */
+	/* this converts the arguement to an interger value */
+	/* to return upon exit, then frees allocated memory */
+	/* for shell and exits program returning output_exit */
+	/* variable */
 	output_exit = atoi(args[1]);
 	free(args);
 	free(input_stdin);
