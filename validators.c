@@ -45,7 +45,7 @@ char *validate_input(char *args[], char *argv[] __attribute__((unused))) /* */
 		}
 		/*if function has iterated through all directories in tokens_path array and not found executable file prits error message to stderr and returns error*/
 		free(tokens_path);
-		fprintf(strderr, "%s: No such file or directory\n", args[0]);
+		fprintf(stderr, "%s: No such file or directory\n", args[0]);
 		return ("Fail access");
 	}
 	return (new_args);
