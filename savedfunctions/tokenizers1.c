@@ -10,44 +10,61 @@
  */
 char **hsh_tokenizer(char *input)
 {
-	int buffer = BUFSIZE, newBuffer = 0, position = 0; /* initializes variables for the buffer size (buffer), a new buffer size in case a reallocation is needed (newBuffer), the current position in the array of tokens (position)*/
-	char **tokens = NULL, *token = NULL;
-	char **backup_tokens = NULL;
+    int buffer = BUFSIZE, newBuffer = 0, position = 0;
+    char **tokens = NULL, *token = NULL;
+    char **backup_tokens = NULL;
+    char *trimmed_token = NULL;
 
-	/* allocate memory for the array of tokens */
-	tokens = malloc(buffer * sizeof(char *));
-	if (tokens == NULL)
-	{
-		fprintf(stderr, "memory allocation error\n"); /* prints error if token array is null*/
-		exit(EXIT_FAILURE);
-	}
-	/* tokenize the input string, checking for delimiter to split the string and replace them with \0 */
-	token = strtok(input, DELIM);
-	while (token != NULL)
-	{
-		tokens[position] = token; /* the array of tokens and the position variable is incremeneted*/
-		position++;
+    tokens = malloc(buffer * sizeof(char *));
+    if (tokens == NULL)
+    {
+        fprintf(stderr, "memory allocation error\n");
+        exit(EXIT_FAILURE);
+    }
 
-		/* if position variable is greater than or qual to buffer size , reallocate memory for the array of tokens*/
-		if (position >= buffer)
-		{
-			newBuffer = BUFSIZE * 2; /* this will double the size of the buffer */
-			backup_tokens = tokens;
-			tokens = _realloc(tokens, buffer, newBuffer * sizeof(char *));
-			if (tokens == NULL) /* if failure, frees backup array of toekns, frees current token, and prints error*/
-			{
-				free(backup_tokens);
-				free(tokens);
-				fprintf(stderr, "memory allocation error\n");
-				exit(EXIT_FAILURE);
-			}
-		}
-		/* once memory reallocation, continue processing the input string */
-		token = strtok(NULL, DELIM);
-	}
-	/* null terminate the array of tokens */
-	tokens[position] = NULL;
-	return (tokens);
+    /* Skip leading spaces */
+    while (*input == ' ')
+        input++;
+
+    /* Use strsep to tokenize the input string */
+    while ((token = strsep(&input, DELIM)) != NULL)
+    {
+        /* Trim trailing spaces from the token */
+        while (strlen(token) > 0 && token[strlen(token) - 1] == ' ')
+        {
+            token[strlen(token) - 1] = '\0';
+        }
+
+        /* Trim leading spaces from the token */
+        trimmed_token = token;
+        while (*trimmed_token == ' ')
+        {
+            trimmed_token++;
+        }
+
+        if (strlen(trimmed_token) > 0)
+        {
+            tokens[position] = trimmed_token;
+            position++;
+
+            if (position >= buffer)
+            {
+                newBuffer = BUFSIZE * 2;
+                backup_tokens = tokens;
+                tokens = realloc(tokens, newBuffer * sizeof(char *));
+                if (tokens == NULL)
+                {
+                    free(backup_tokens);
+                    fprintf(stderr, "memory allocation error\n");
+                    exit(EXIT_FAILURE);
+                }
+                buffer = newBuffer;
+            }
+        }
+    }
+
+    tokens[position] = NULL;
+    return tokens;
 }
 
 /**

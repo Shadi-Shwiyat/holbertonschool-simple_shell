@@ -8,7 +8,7 @@
 #include <string.h>
 
 #define BUFSIZE 100 /* constant buffer to use in toekn functions*/
-#define DELIM "\t\n" /* delimiters to check */
+#define DELIM " \t\n" /* delimiters to check */
 
 /**
  * struct choose_builtin - Builtin commands struct
