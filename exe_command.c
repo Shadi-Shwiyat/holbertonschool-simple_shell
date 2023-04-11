@@ -1,5 +1,7 @@
 #include "shell.h"
 
+extern char **environ;
+
 /**
  * hsh_execute - Fork process and replace the child
  * with a new program
