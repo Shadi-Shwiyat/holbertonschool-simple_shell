@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <errno.h>
 #include <sys/wait.h>
 #include <string.h>
 
@@ -22,7 +23,7 @@ typedef struct choose_builtin
 } choose_builtins_t;
 
 /* global variable to access the enviromment list */
-extern char *environ[];
+extern char **environ;
 
 /* execute commands */
 int hsh_execute(char *args[], char *argv[], int *exit_status);

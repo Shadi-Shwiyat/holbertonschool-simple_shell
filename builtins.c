@@ -1,5 +1,7 @@
 #include "shell.h"
 
+extern char **environ;
+
 /**
  * hsh_cd - Change directory
  *
@@ -139,7 +141,7 @@ int hsh_env(char **args, char *input_stdin, int *exit_status)
 	/* and if they are print an error */
 	if (environ[i] == NULL)
 	{
-		printf("%s", "The built in env is empty");
+		printf("%s\n", "The built in env is empty");
 		return (1);
 	}
 
