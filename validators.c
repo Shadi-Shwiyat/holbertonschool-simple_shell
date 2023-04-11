@@ -6,7 +6,7 @@
 * @argv: String of arguments from input
 * Return: A pointer to an array of the tokenized PATH directories
 */
-char *validate_input(char **args, char **argv __attribute__((unused))) /* */
+char *validate_input(char **args, char **argv) /* */
 {
 	char *new_args, *first, *slash_argument = "/";
 	char **tokens_path, holder_env[1024];
@@ -17,7 +17,7 @@ char *validate_input(char **args, char **argv __attribute__((unused))) /* */
 		new_args = args[0]; /* point to the same address */
 		if ((access(new_args, F_OK) == -1)) /* check if file exists if not it points to error message */
 		{
-			fprintf(stderr, "%s: No such file or directory\n", args[0]); /* returns this message as error if file or path doesnt exist */
+			fprintf(stderr, "%s: %d: %s: No such file or directory\n", argv[0], __LINE__, args[0]); /* returns this message as error if file or path doesnt exist */
 			return ("Fail access");
 		}
 	}
@@ -45,7 +45,7 @@ char *validate_input(char **args, char **argv __attribute__((unused))) /* */
 		}
 		/*if function has iterated through all directories in tokens_path array and not found executable file prits error message to stderr and returns error*/
 		free(tokens_path);
-		fprintf(stderr, "%s: No such file or directory\n", args[0]);
+		fprintf(stderr, "%s: %d: %s: No such file or directory\n", argv[0], __LINE__, args[0]);
 		return ("Fail access");
 	}
 	return (new_args);

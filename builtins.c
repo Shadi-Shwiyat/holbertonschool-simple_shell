@@ -38,7 +38,7 @@ int hsh_cd(char **args, char *input_stdin, int *exit_status)
 
 	/* check if any chdir() syscall had an error */
 	if (status == -1)
-		perror("cd had an error");
+		perror("cd: error");
 
 	/* set the env variable "OLDPWD" to value of the cwd */
 	/* the parameter 1 indicates if "OLDPWD" already exist to overwrite it */
@@ -82,7 +82,7 @@ int hsh_setenv(char **args,  char *input_stdin, int *exit_status)
 
 	/* if user supplied incorrect number of args, print an error */
 	else
-		fprintf(stderr, "Try use \"setenv [KEY] [VALUE]\"\n");
+		fprintf(stderr, "incorrect format, use: \"setenv [KEY] [VALUE]\"\n");
 
 	return (1);
 }
@@ -115,7 +115,7 @@ int hsh_unsetenv(char **args,  char *input_stdin, int *exit_status)
 		unsetenv(args[1]);
 	/* if user supplied incorrect number of args, print an error */
 	else if (n_tokens != 2)
-		fprintf(stderr, "Try use \"unsetenv [KEY]\"\n");
+		fprintf(stderr, "incorrect format, use: \"unsetenv [KEY]\"\n");
 
 	return (1);
 }
@@ -141,7 +141,7 @@ int hsh_env(char **args, char *input_stdin, int *exit_status)
 	/* and if they are print an error */
 	if (environ[i] == NULL)
 	{
-		printf("%s\n", "The built in env is empty");
+		printf("%s\n", "The builtin env is empty");
 		return (1);
 	}
 
