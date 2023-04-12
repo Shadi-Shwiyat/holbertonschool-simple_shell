@@ -37,7 +37,7 @@ char *validate_input(char **args, char **argv) /* */
 			}
 			else
 			{
-				free(token_path);
+				free(tokens_path);
 				free(first);
 				return (new_args);
 			}
