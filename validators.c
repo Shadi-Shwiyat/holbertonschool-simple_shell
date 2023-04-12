@@ -32,13 +32,13 @@ char *validate_input(char **args, char **argv) /* */
 			new_args = str_concat(tokens_path[i], first);
 			if ((access(new_args, F_OK) == -1))
 			{
-				free(first);
 				free(new_args);
+				free(first);
 			}
 			else
 			{
+				free(token_path);
 				free(first);
-				free(tokens_path);
 				return (new_args);
 			}
 			i++;
