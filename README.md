@@ -140,7 +140,7 @@ $
 
 ## Authors
 | [<img src="https://github.com/Shadi-Shwiyat.png" width=60><br><sub> Shadi Shwiyat </sub>](https://github.com/Shadi-Shwiyat) | [<img src="https://github.com/Nomad-Rob.png" width=60><br><sub> Robert Farley </sub>](https://github.com/Nomad-Rob) |
-| :---: | :---: | :---: |
+| :---: | :---: |
 
 [Back to top](#simple-shell)<!--@Shadi-Shwiyat-->
 
