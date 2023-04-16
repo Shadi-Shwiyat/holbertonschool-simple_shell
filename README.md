@@ -21,7 +21,7 @@ This table give a brief description of the files used for the simple shell to wo
 | File | Content | Description |
 | --- | --- | --- |
 | <pre>[shell.h](shell.h)</pre> | <pre>Header of the project</pre> | <pre>Contains the structures, prototypes, macros and<br>external variables of the project.</pre> |
-| <pre>[shell.c](shell.c)</pre> | <pre>Entry point;</pre> | <pre>Main loop, recieve input from the Command Line Interface<br>parse and execute it.</pre> |
+| <pre>[shell.c](shell.c)</pre> | <pre>int main.c;</pre> | <pre>Main loop, recieve input from the Command Line Interface<br>parse and execute it.</pre> |
 | <pre>[tokenizers.c](tokenizers.c)</pre> | <pre>char **hsh_tokenizer();<br>char **tokenizer_path();</pre> | <pre>Split the input string into a array of tokens.<br>Split the environment variable PATH into an array of tokens.</pre> |
 | <pre>[validators.c](validators.c)</pre> | <pre>char *validate_input();<br>int validate_spaces();</pre> | <pre>Validate if PATH exists<br>Validate spaces, tabs and line breaks.</pre> |
 | <pre>[exe_command.c](exe_command.c)</pre> | <pre>int hsh_execute();<br>int hsh_execute_builtins();</pre> | <pre>Fork process and replace the child with a new program.<br>Choose from an array of builtin functions.</pre> |
@@ -139,7 +139,7 @@ $
 ```
 
 ## Authors
-| [<img src="https://github.com/Shadi-Shwiyat.png" width=85><br><sub> Shadi Shwiyat </sub>](https://github.com/Shadi-Shwiyat) | [<img src="https://github.com/Nomad-Rob.png" width=85><br><sub> Robert Farley </sub>](https://github.com/Nomad-Rob) |
+| [<img src="https://github.com/Shadi-Shwiyat.png" width=60><br><sub> Shadi Shwiyat </sub>](https://github.com/Shadi-Shwiyat) | [<img src="https://github.com/Nomad-Rob.png" width=60><br><sub> Robert Farley </sub>](https://github.com/Nomad-Rob) |
 | :---: | :---: | :---: |
 
 [Back to top](#simple-shell)<!--@Shadi-Shwiyat-->
