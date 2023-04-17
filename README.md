@@ -29,7 +29,7 @@ This table give a brief description of the files used for the simple shell to wo
 | <pre>[the_helpers.c](the_helpers.c)</pre> | <pre>char *str_concat();<br>void *_realloc();</pre> | <pre>Concatenate two strings.<br>Reallocate a memory block.</pre> |
 
 ## System and Library calls
-This table lists all the System calls `2` and Library calls `3` used in this project, you could read more by clicking on their respective manual pages. 
+This table lists all the System calls `2` and Library calls `3` used in this project, you could read more by clicking on their respective manual pages.
 
 | Name | Manual page | Brief description |
 | --- | --- | --- |
@@ -114,7 +114,7 @@ drwxr-xr-x  8 root root   201 Aug  7 23:00 .git
 -rw-r--r--  1 root root  2517 Aug  7 23:00 tokenizers.c
 -rw-r--r--  1 root root  1749 Aug  7 23:00 validators.c
 #$ exit
-$ 
+$
 ```
 
 Non-interactive mode:
