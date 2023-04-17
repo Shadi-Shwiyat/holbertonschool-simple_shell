@@ -1,6 +1,6 @@
 #include "shell.h"
 
-extern char **environ;
+char **environ = NULL;
 
 /**
  * hsh_cd - Change directory

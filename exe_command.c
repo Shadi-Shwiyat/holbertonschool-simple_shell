@@ -1,6 +1,6 @@
 #include "shell.h"
 
-extern char **environ;
+char **environ = NULL;
 
 /**
  * hsh_execute - Fork process and replace the child
@@ -22,10 +22,11 @@ int hsh_execute(char **args, char **argv, int *exit_status)
 	new_args = validate_input(args, argv);
 	if (strcmp(new_args, "Fail access") == 0)
 		return (1);
-	pid = fork(); /* create a duplicate process (child) to execute commands while shell continues to run */
-	if (pid == 0) /* if the current process is the child process, i.e. fork returns 0 */
+	pid = fork();
+	/* create a duplicate process (child) */
+	if (pid == 0) /* current process is child process */
 	{
-		/* pass execve the tokenized command and execute command, if it fails to execute it returns -1 */
+		/* pass execve tokenized command, wait for execution */
 		if (execve(new_args, args, environ) == -1)
 		{
 			perror("execve fail");
@@ -38,13 +39,14 @@ int hsh_execute(char **args, char **argv, int *exit_status)
 		free(new_args);
 		return (1);
 	}
-	else /* safety net if fork() failed to created a child process or execve fails to run new program */
+	else
+	/* safety net if fork() failed to created a child process or execve fails */
 	{
 		/* equivalent to wait, -1 indicates parent to wait for child to terminate */
 		waitpid(-1, &status, 0);
-		/* check if the chld terminated normally with macro, true if normal false otherwise */
+		/* check if the chld terminated normally with macro */
 		if (WIFEXITED(status))
-			/* set exit status equal to the return of the main function of child process using macro */
+		/* set exit status equal to the return child process main */
 			*exit_status = WEXITSTATUS(status);
 		/* evaluate first element of first token */
 		if (args[0][0] != '/' && args[0][0] != '.')
