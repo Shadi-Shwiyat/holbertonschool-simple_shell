@@ -4,6 +4,7 @@
 
 # Table of Contents
 - [Description](#description)
+- [Flowchart[ (#flowchart)
 - [File Structure](#file-structure)
 - [System and Library calls](#system-and-library-calls)
 - [Installation](#installation)
@@ -14,6 +15,9 @@
 This simple shell was created by Rob Farley and Shadi Shwiyat as a project for Holberton School of Computer Science.
 It is a simple UNIX command interpreter written in the C programming language. The program uses bash commands it retrieves from the command line interface (CLI) that are inputed by the user.
 The shell can be run in interactive and non interactive mode as shown below.
+
+## Flowchart
+![Flowchart](https://user-images.githubusercontent.com/118314635/232562867-fcd7a728-bc11-4c19-b78e-c2142c2f9912.PNG)
 
 ## File Structure
 This table give a brief description of the files used for the simple shell to work, click on the names to get the source code.
