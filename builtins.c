@@ -1,6 +1,5 @@
 #include "shell.h"
 
-
 /**
  * hsh_cd - Change directory
  *
