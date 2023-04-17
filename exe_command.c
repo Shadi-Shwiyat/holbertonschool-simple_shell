@@ -1,6 +1,5 @@
 #include "shell.h"
 
-char **environ = NULL;
 
 /**
  * hsh_execute - Fork process and replace the child

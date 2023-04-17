@@ -1,5 +1,7 @@
 #include "shell.h"
 
+char **environ = NULL;
+
 /**
 * main - Main loop that parses input from Command Line interface and executes
 * @argc: Number of args passed to the program
