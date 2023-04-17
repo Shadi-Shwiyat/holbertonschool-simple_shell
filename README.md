@@ -4,7 +4,7 @@
 
 # Table of Contents
 - [Description](#description)
-- [Flowchart] (#flowchart)
+- [Flowchart](#flowchart)
 - [File Structure](#file-structure)
 - [System and Library calls](#system-and-library-calls)
 - [Installation](#installation)
