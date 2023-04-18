@@ -17,7 +17,7 @@ It is a simple UNIX command interpreter written in the C programming language. T
 The shell can be run in interactive and non interactive mode as shown below.
 
 ## Flowchart
-![Flowchart](https://user-images.githubusercontent.com/118314635/232562867-fcd7a728-bc11-4c19-b78e-c2142c2f9912.PNG)
+![Screenshot 2023-04-18 145017](https://user-images.githubusercontent.com/118314635/232889814-c96b5a35-7032-4b5c-8e06-4263eb0f5c2f.png)
 
 ## File Structure
 This table give a brief description of the files used for the simple shell to work, click on the names to get the source code.
